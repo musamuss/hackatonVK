@@ -304,3 +304,8 @@
 .Place_order .Place__footer {
   position: static;
 }
+
+.isDisabled {
+  pointer-events: none;
+  opacity: 0.6;
+}
