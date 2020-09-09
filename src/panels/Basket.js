@@ -11,7 +11,7 @@ import './place.css';
 const Basket = ({ match: { params: { areaId, itemId }}, foodAreas, order }) => {
   const [ faster, setFaster ] = useState(true);
   const [ time, setTime ] = useState('');
-  const [ selfService, setSelfService ] = useState(false);
+  const [ selfService, setSelfService ] = useState(JSON.parse(localStorage.getItem('selfServiceFlag')) || false);
   const area = foodAreas.filter(area => area.id === areaId)[0];
   const item = area.items.filter(item => item.id === itemId)[0];
 
@@ -33,6 +33,12 @@ const Basket = ({ match: { params: { areaId, itemId }}, foodAreas, order }) => {
 
     return [ accounting.formatNumber(result, 0, ' '), products ];
   }, [ order, item ]);
+
+  const onSetService = () => {
+    const modifiedSelfService = !selfService;
+    setSelfService(modifiedSelfService);
+    localStorage.setItem('selfServiceFlag', modifiedSelfService);
+  }
 
   return (
     <div className="Place">
@@ -140,11 +146,11 @@ const Basket = ({ match: { params: { areaId, itemId }}, foodAreas, order }) => {
         </div>
         <div className="Place__choice-item">
           <h3>С собой</h3>
-          <Checkbox checked={selfService} onToggle={() => setSelfService(!selfService)} />
+          <Checkbox checked={selfService} onToggle={onSetService} />
         </div>
         <div className="Place__choice-item">
           <h3>На месте</h3>
-          <Checkbox checked={!selfService} onToggle={() => setSelfService(!setSelfService)} />
+          <Checkbox checked={!selfService} onToggle={onSetService} />
         </div>
       </div>
       <footer className="Place__footer">
