@@ -135,6 +135,7 @@ const Basket = ({ match: { params: { areaId, itemId }}, foodAreas, order }) => {
                 setFaster(false);
               }
             }}
+            type="time"
           />
         </div>
         <div className="Place__choice-item">
