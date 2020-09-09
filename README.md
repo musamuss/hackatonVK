@@ -1,3 +1,7 @@
+<p align="center">
+  <img width=300 src="https://github.com/musamuss/hackatonVK/blob/master/PLFSdJKWA-Q.jpg" alt="Logo"/>
+</p>
+
 Развёрнутый сайт - kozodoi-club-hack.surge.sh
 
 Для локального развёртывания в корне необходимо выполнить npm i, затем npm start
